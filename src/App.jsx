@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Dashboard from "./dashboard";
 import Login from "./login.jsx";
 import NotFound from "./notFound";
@@ -16,8 +16,8 @@ class App extends Component {
               <Switch>
                 <Route path="/" component={Dashboard} exact />
                 <Route path="/login" component={Login} exact />
+                <Redirect path="/entrar" to="/login" />
                 <Route component={NotFound} />
-                
               </Switch>
           </BrowserRouter>
         </div>

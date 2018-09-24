@@ -20,7 +20,7 @@ class login extends React.Component {
     if (user) {
       // valid user
       this.props.loginStore(user);
-      this.props.history.push("/");
+      // this.props.history.push("/");
     } else {
       // no valid user
       this.setState({ error: "invalid username or password" });
