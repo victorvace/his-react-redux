@@ -9,7 +9,7 @@ class dashboard extends React.Component {
   };
   render() {
     if (!this.props.auth) {
-      return <Redirect to="/login" />;
+      return <Redirect to="/" />;
     } else {
       const { role, name, uid } = this.props.auth;
 
@@ -53,15 +53,15 @@ class dashboard extends React.Component {
             {this.props.auth ? name + " is logged in." : "no user is logged in"}
           </h5>
 
-         {
-           links.map(
-             item => (
-              item.roles.includes(role) 
-              && 
-              <Link to={item.to}>{item.text}</Link>
-             )
-           )
-         }
+          {
+            links.map(
+              item => (
+                item.roles.includes(role) 
+                && 
+                <Link key={item.to} to={item.to}>{item.text}</Link>
+              )
+            )
+          }
         </section>
       );
     }

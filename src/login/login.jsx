@@ -1,5 +1,5 @@
 import React from "react";
-import api from "./services/api";
+import api from "../services/api";
 import "./login.css";
 import { Redirect } from "react-router-dom";
 
@@ -8,19 +8,17 @@ class login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "jupegarnica",
-      password: "1234",
+      email: '',
+      password: '',
       error: null
     };
   }
   login(ev) {
     ev.preventDefault();
-    const { username, password } = this.state;
-    let user = api.login(username, password);
+    const { email, password } = this.state;
+    let user = api.login(email, password);
     if (user) {
-      // valid user
       this.props.loginStore(user);
-      // this.props.history.push("/");
     } else {
       // no valid user
       this.setState({ error: "invalid username or password" });
@@ -34,7 +32,7 @@ class login extends React.Component {
   }
   render() {
     if (this.props.auth) {
-      return <Redirect to="/" />;
+      return <Redirect to="/dashboard" />;
     }
     return (
       <section className="login">
@@ -44,8 +42,8 @@ class login extends React.Component {
         <form onSubmit={this.login.bind(this)}>
           <input
             type="text"
-            name="username"
-            value={this.state.username}
+            name="email"
+            value={this.state.email}
             onChange={this.handleChange.bind(this)}
           />
           <input

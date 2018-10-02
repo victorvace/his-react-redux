@@ -24,6 +24,15 @@ function reducer( state = initialState, action ) {
 
             return _state
         }
+    case 'LOAD_PATIENTS':
+        {
+            let _state = {
+                ...state,
+                patients: action.patients,
+            };
+
+            return _state
+        }
 
     default:
         return state;
